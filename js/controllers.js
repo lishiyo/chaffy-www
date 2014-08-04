@@ -452,9 +452,21 @@ cInt = setInterval(function(){
     
     // $scope.username = 'User' + Math.floor(Math.random() * 501);
     $scope.username = $scope.userAlias;
-    localStorage.setItem("localusername", $scope.username );
+	localStorage.setItem("localusername", $scope.username);
+						 
+	  /**
+	  $scope.username = function() {
+		  if ($scope.userAlias!=undefined) {
+			  return $scope.userAlias;
+		  } else {
+			  return 'anonymous';
+		  }
+	  }
+	  
+    localStorage.setItem("localusername", $scope.username());
+**/
 
-
+	  
     $scope.setUserGender = function(){
        if ($scope.userGender==0) {
         return 'male';
@@ -465,6 +477,7 @@ cInt = setInterval(function(){
       }
     }
     localStorage.setItem("localuserGender", $scope.setUserGender());
+	  
     $scope.setUserAge = function(){
        if ($scope.userAge==0) {
         return '18-29';
@@ -479,7 +492,7 @@ cInt = setInterval(function(){
     localStorage.setItem("localuserAge", $scope.setUserAge());
 
     userRef.push({
-      username: localStorage.getItem("localusername"),
+      username: localStorage.getItem('localusername'),
       gender: $scope.setUserGender(),
       age: $scope.setUserAge()
     });
